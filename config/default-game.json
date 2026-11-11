@@ -1,0 +1,56 @@
+{
+  "title": "VƯỢT ẢI XUẤT KHẨU GẠO",
+  "subtitle": "Từ cánh đồng Việt Nam đến thị trường châu Âu",
+  "startingCash": 10,
+  "teams": [
+    {"id":"rice","name":"Đội Hạt Ngọc","icon":"🌾","color":"#e6ad29"},
+    {"id":"trade","name":"Đội Hội Nhập","icon":"🤝","color":"#3986e8"},
+    {"id":"rise","name":"Đội Vươn Xa","icon":"🚀","color":"#f16575"},
+    {"id":"delta","name":"Đội Đồng Bằng","icon":"🌿","color":"#39ad77"}
+  ],
+  "stages": [
+    {
+      "id":"lot","type":"lot","title":"Chọn chiến lược lô gạo","icon":"🌾","duration":25,
+      "description":"Mỗi doanh nghiệp chọn lô hàng để xuất sang EU. Gạo thơm có doanh thu tiềm năng cao nhưng tốn vốn đầu tư hơn.",
+      "options":[
+        {"label":"Gạo phổ thông","detail":"Chi phí 3 xu · Doanh thu khi về đích 8 xu","cost":3,"revenue":8},
+        {"label":"Gạo thơm cao cấp","detail":"Chi phí 5 xu · Doanh thu khi về đích 12 xu","cost":5,"revenue":12}
+      ]
+    },
+    {
+      "id":"standards","type":"quiz","title":"Kiểm định SPS / MRLs","icon":"🧪","duration":22,"wrongPenalty":1,
+      "description":"Các thành viên trả lời trên máy riêng. Đội thắng câu hỏi nếu đáp án được nhiều thành viên chọn nhất là đáp án đúng. Hòa phiếu hoặc không trả lời: trừ phí xử lý.",
+      "questions":[
+        {"prompt":"EVFTA mang lại ưu đãi thuế quan cho gạo Việt. Điều này có nghĩa là gì?","options":["Gạo không cần kiểm tra an toàn thực phẩm","Gạo vẫn phải đáp ứng quy định nhập khẩu và an toàn thực phẩm của EU","Doanh nghiệp được bỏ qua truy xuất nguồn gốc","Chỉ cần thay nhãn bao bì là được vào EU"],"correct":1,"explanation":"Ưu đãi thuế quan không thay thế quy định SPS, giới hạn dư lượng và yêu cầu truy xuất nguồn gốc."},
+        {"prompt":"MRLs trong kiểm soát thực phẩm của EU là gì?","options":["Mức tồn kho tối thiểu","Giới hạn dư lượng tối đa của thuốc bảo vệ thực vật","Tỷ lệ thuế xuất khẩu","Hạn ngạch vận tải đường biển"],"correct":1,"explanation":"MRLs là mức dư lượng tối đa cho phép đối với các hoạt chất theo quy định áp dụng cho thực phẩm."},
+        {"prompt":"Muốn tăng khả năng truy xuất nguồn gốc gạo xuất khẩu, doanh nghiệp nên ưu tiên việc gì?","options":["Bỏ hồ sơ vùng trồng","Lưu và liên kết thông tin vùng trồng, lô hàng và quá trình chế biến","Chỉ đổi màu bao gạo","Dựa hoàn toàn vào lời cam kết miệng"],"correct":1,"explanation":"Hồ sơ vùng trồng, lô hàng và chế biến giúp truy vết và chứng minh việc kiểm soát chất lượng."}
+      ]
+    },
+    {
+      "id":"auction","type":"auction","title":"Đấu giá thẻ ưu đãi","icon":"🔨","duration":25,"maxBid":3,"slots":2,"discount":4,
+      "description":"Đấu giá giả lập trong game, KHÔNG phải cơ chế EU cấp hạn ngạch EVFTA. Hai đội đặt giá cao nhất sẽ giành thẻ giảm 4 xu chi phí khi kết toán. Mỗi đội tự bỏ phiếu mức giá; thẻ được công bố sau khi hết giờ."
+    },
+    {
+      "id":"logistics","type":"event","title":"Biến cố logistics","icon":"🚢","duration":25,"badChance":65,
+      "description":"Chọn phương án ứng phó trước khi biết biến cố. Sau khi khóa phiếu, hệ thống bốc thăm tình hình vận tải (xác suất được host cấu hình).",
+      "badText":"Bão và gián đoạn vận tải khiến chi phí tăng!",
+      "goodText":"Hành trình vận tải thuận lợi, chi phí ổn định.",
+      "options":[
+        {"label":"Mua bảo hiểm logistics","detail":"Trả trước 2 xu, tránh thiệt hại nếu xảy ra biến cố","cost":2,"badLoss":0,"goodGain":0},
+        {"label":"Tiết kiệm, không dự phòng","detail":"Không tốn trước; nếu gặp sự cố sẽ mất 4 xu","cost":0,"badLoss":4,"goodGain":0},
+        {"label":"Dự phòng một phần","detail":"Trả trước 1 xu; nếu gặp sự cố sẽ mất thêm 1 xu","cost":1,"badLoss":1,"goodGain":0}
+      ]
+    },
+    {
+      "id":"brand","type":"brand","title":"Xây dựng thương hiệu","icon":"🏷️","duration":25,
+      "description":"Chọn kênh bán hàng. Thương hiệu riêng có cơ hội lợi nhuận cao hơn nhưng cần đầu tư và phải vượt câu hỏi cuối.",
+      "options":[
+        {"label":"Bán cho nhà phân phối","detail":"Không tốn thêm vốn, được cộng chắc chắn 2 xu cuối game","cost":0,"bonus":2,"needsQuiz":false},
+        {"label":"Đầu tư thương hiệu Việt","detail":"Chi 2 xu, có thể nhận thêm 6 xu nếu giải đúng câu cuối","cost":2,"bonus":6,"needsQuiz":true}
+      ],
+      "questions":[
+        {"prompt":"Đâu là hướng đi giúp doanh nghiệp gạo Việt gia tăng phần giá trị nhận được trong chuỗi xuất khẩu?","options":["Chỉ xuất thô và giao toàn bộ xây dựng thương hiệu cho bên khác","Chủ động nâng chất lượng, phát triển thương hiệu và kết nối kênh phân phối","Bỏ kiểm soát chất lượng để giảm chi phí","Phụ thuộc duy nhất vào một nhà nhập khẩu"],"correct":1,"explanation":"Nâng chuẩn chất lượng, chủ động thương hiệu và tăng năng lực phân phối giúp củng cố vị thế trong chuỗi giá trị."}
+      ]
+    }
+  ]
+}

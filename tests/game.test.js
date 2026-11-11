@@ -1,0 +1,16 @@
+'use strict';
+const test=require('node:test');const assert=require('node:assert/strict');
+const sample=require('../config/default-game.json');
+const {validateConfig,createSteps,majority,makeTeamState,settle,finalize,projectedProfit}=require('../game-core');
+function fake(){const config=validateConfig(sample),steps=createSteps(config),players=new Map(),teams={};for(const team of config.teams){teams[team.id]=makeTeamState(config.startingCash);players.set(team.id+'a',{team:team.id});players.set(team.id+'b',{team:team.id});}return {config,steps,players,teams,stepIndex:0,votes:new Map()};}
+function voteAll(session,byTeam){session.votes.clear();for(const [team,arr] of Object.entries(byTeam)){arr.forEach((n,i)=>session.votes.set(team+(i?'b':'a'),n));}}
+function move(session,idx,answers,random=()=>0){session.stepIndex=idx;voteAll(session,answers);return settle(session,random);}
+test('Cấu hình mặc định có 5 ải và 8 lượt',()=>{const cfg=validateConfig(sample);assert.equal(cfg.stages.length,5);assert.equal(createSteps(cfg).length,8);});
+test('Cấu hình không hợp lệ bị chặn',()=>{const clone=structuredClone(sample);clone.stages[1].questions[0].correct=5;assert.throws(()=>validateConfig(clone),/Đáp án đúng/);const x=structuredClone(sample);x.teams[1].name=x.teams[0].name;assert.throws(()=>validateConfig(x),/khác nhau/);});
+test('Phiếu đa số, hòa phiếu, tie lowest',()=>{assert.deepEqual(majority([1,1,0],4).choice,1);assert.equal(majority([0,1],4).choice,null);assert.equal(majority([1,2],4,'lowest').choice,1);assert.equal(majority([],4).choice,null);});
+test('Lựa chọn lô gạo ghi nhận chi phí và doanh thu dự kiến',()=>{const s=fake();const r=move(s,0,{rice:[1,1],trade:[0,0]});assert.equal(s.teams.rice.cash,5);assert.equal(s.teams.rice.lotRevenue,12);assert.equal(s.teams.trade.cash,7);assert.equal(s.teams.trade.lotRevenue,8);assert.equal(r.summaries[0].choice,1);});
+test('Quiz theo đa số: đúng +1 xu; hòa hoặc sai trừ phí',()=>{const s=fake();move(s,1,{rice:[1,1],trade:[1,0],rise:[0,0]});assert.equal(s.teams.rice.cash,11);assert.equal(s.teams.rice.quality,1);assert.equal(s.teams.trade.cash,9);assert.equal(s.teams.rise.cash,9);});
+test('Đấu giá kín: hai đội thắng mới trả giá, nhận thẻ',()=>{const s=fake();const r=move(s,4,{rice:[3,3],trade:[2,2],rise:[1,1],delta:[0,0]});assert.equal(r.summaries.filter(x=>x.won).length,2);assert.equal(s.teams.rice.cash,7);assert.equal(s.teams.trade.cash,8);assert.equal(s.teams.rice.discount,4);assert.equal(s.teams.rise.cash,10);});
+test('Biến cố gây thiệt hại theo lựa chọn nhưng không trừ đồng đội khác',()=>{const s=fake();const r=move(s,5,{rice:[0,0],trade:[1,1],rise:[2,2]},()=>0);assert.equal(r.event.bad,true);assert.equal(s.teams.rice.cash,8);assert.equal(s.teams.trade.cash,6);assert.equal(s.teams.rise.cash,8);});
+test('Kết toán cuối có lợi nhuận từ hàng, thẻ, thương hiệu',()=>{const s=fake();move(s,0,{rice:[1,1]});for(let i=1;i<=3;i++)move(s,i,{rice:[1,1]});move(s,4,{rice:[3,3],trade:[2,2]});move(s,5,{rice:[0,0]},()=>0);move(s,6,{rice:[1,1]});move(s,7,{rice:[1,1]});assert.equal(s.teams.rice.brandBonus,6);finalize(s);assert.equal(s.teams.rice.cash,23);assert.equal(projectedProfit(s.teams.rice,10,true),13);});
+test('Trả lời thương hiệu sai không nhận bonus nếu đầu tư thương hiệu',()=>{const s=fake();move(s,6,{rice:[1,1]});move(s,7,{rice:[0,0]});assert.equal(s.teams.rice.brandBonus,0);});
