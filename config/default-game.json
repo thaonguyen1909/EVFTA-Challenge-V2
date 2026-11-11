@@ -2,11 +2,17 @@
   "title": "VƯỢT ẢI XUẤT KHẨU GẠO",
   "subtitle": "Từ cánh đồng Việt Nam đến thị trường châu Âu",
   "startingCash": 10,
+  "teamCount": 6,
+  "maxMembersPerTeam": 6,
+  "allowedGroupNumbers": [4, 5, 6, 7, 8, 9, 10],
+  "selectedGroupNumbers": [4, 5, 6, 7, 8, 9],
   "teams": [
-    {"id":"rice","name":"Đội Hạt Ngọc","icon":"🌾","color":"#e6ad29"},
-    {"id":"trade","name":"Đội Hội Nhập","icon":"🤝","color":"#3986e8"},
-    {"id":"rise","name":"Đội Vươn Xa","icon":"🚀","color":"#f16575"},
-    {"id":"delta","name":"Đội Đồng Bằng","icon":"🌿","color":"#39ad77"}
+    {"id":"team_1","name":"Nhóm 4","icon":"🌾","color":"#e6ad29","groupNumber":4},
+    {"id":"team_2","name":"Nhóm 5","icon":"🤝","color":"#3986e8","groupNumber":5},
+    {"id":"team_3","name":"Nhóm 6","icon":"🚀","color":"#f16575","groupNumber":6},
+    {"id":"team_4","name":"Nhóm 7","icon":"🌿","color":"#39ad77","groupNumber":7},
+    {"id":"team_5","name":"Nhóm 8","icon":"⚡","color":"#9c5de8","groupNumber":8},
+    {"id":"team_6","name":"Nhóm 9","icon":"🎯","color":"#f97316","groupNumber":9}
   ],
   "stages": [
     {

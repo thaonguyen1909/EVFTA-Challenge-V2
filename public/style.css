@@ -12,3 +12,29 @@
 @media(max-width:1200px){.host-grid{grid-template-columns:220px minmax(0,1fr)}.host-preview{grid-column:1 / -1}.host-preview #hostTeams{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.projection-grid{grid-template-columns:1fr}.screen-page .sea-map{height:365px}.host-page .control-layout{grid-template-columns:1fr}.heading-boat{font-size:30px}.heading-boat span{font-size:45px}}
 @media(max-width:800px){.mast{height:70px;padding:0 15px}.brand strong{font-size:17px}.brand small{font-size:8px}.brand-mark{font-size:30px}.mast-right .tiny-pill,.mast-right .navlink{display:none}.player-shell,.host-shell,.screen-shell{width:calc(100% - 24px);margin:16px auto}.player-intro:before,.player-intro:after{display:none}.player-intro h1{font-size:27px}.large-join{padding:18px}.team-picker{grid-template-columns:1fr 1fr;gap:8px}.pick-card{min-height:116px;flex-direction:column;align-items:flex-start;padding:12px;gap:8px}.pick-card .pick-icon{font-size:28px;padding:4px}.pick-card strong{font-size:12px}.pick-card small{font-size:9px}.pick-card .radio-circle{position:absolute;right:9px;top:9px}.player-content{grid-template-columns:1fr}.player-side{order:2}.active-challenge{min-height:400px}.host-grid{grid-template-columns:1fr}.stage-sidebar{position:static}.stage-sidebar #stageNav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stage-nav-button{margin:0}.host-preview #hostTeams{grid-template-columns:1fr 1fr}.page-heading h1{font-size:27px}.heading-boat{display:none}.control-bar{gap:12px}.room-state{flex-basis:100%}.control-buttons{width:100%}.control-buttons .btn{flex:1}.screen-page .sea-map{height:335px}.screen-page .game-board{padding:13px}.project-title h1{font-size:19px}.screen-page .mission-card .option-preview{grid-template-columns:1fr}.sea-map .boat-bubble{font-size:8px;padding:4px}.sea-map .boat-emoji{font-size:25px}.shore{min-width:73px}.shore strong{font-size:9px;padding:4px}.shore span{font-size:25px}}
 @media(max-width:480px){.form-grid{grid-template-columns:1fr;gap:0}.team-picker{grid-template-columns:1fr}.pick-card{min-height:70px;flex-direction:row;padding:10px}.pick-card .radio-circle{position:static;margin-left:auto}.journey-mini{gap:5px}.journey-mini span{font-size:9px;padding:7px}.journey-mini b{display:none}.active-challenge,.player-side{padding:16px}.config-editor .field-group,.config-editor .field-group.three{grid-template-columns:1fr}.editor-actions .btn{flex:1}.host-preview #hostTeams{grid-template-columns:1fr}.stage-sidebar #stageNav{grid-template-columns:1fr}.screen-page .sea-map{height:280px}.boat-marker{transform:translate(-50%,-12%)}.boat-bubble{max-width:84px;white-space:normal;font-size:7px!important}.shore{width:20%;min-width:70px}.stage-chip{min-height:60px}.stage-chip b{font-size:8px}.stage-chip>span{font-size:17px}.countdown-box{min-width:80px;padding:7px}.countdown-box strong{font-size:24px}.countdown-box small{font-size:7px}.screen-page .project-title{gap:7px}.screen-page .project-title h1{font-size:15px}}
+
+/* 6-Team & Capacity Enhancements */
+.picker-header{display:flex;align-items:center;justify-content:space-between;margin:14px 0 12px;gap:10px}
+.picker-header h3{margin:0}
+.capacity-hint{font-size:11px;color:#1861a9;background:#e9f3fe;padding:5px 12px;border-radius:12px;font-weight:700}
+.team-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:21px}
+.pick-card.card-full{opacity:.6;cursor:not-allowed;background:#f8f9fa!important;border-color:#d5dee8!important;box-shadow:none!important}
+.pick-card.card-full .radio-circle{background:#f06666;color:#fff;border-color:#f06666;display:grid;place-items:center;font-size:11px;font-weight:900}
+.pick-capacity{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;margin-top:5px;background:#eaf2fd;color:#1e5b9e}
+.pick-capacity.cap-warning{background:#fdf2d8;color:#a56807}
+.pick-capacity.cap-full{background:#fde5e5;color:#b92828}
+.chip-open{background:#e7faed;color:#188544;border:1px solid #bceece}
+.chip-locked{background:#fee8e8;color:#b82626;border:1px solid #f8baba}
+.team-config-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:16px 0 20px}
+.group-selector-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:18px 0}
+.group-select-card{border:2px solid #e1ebf6;border-radius:15px;background:#fff;padding:15px;transition:all .18s;position:relative}
+.group-select-card.selected{border-color:var(--team);background:linear-gradient(135deg,#fff,color-mix(in srgb,var(--team) 10%,white));box-shadow:0 6px 18px color-mix(in srgb,var(--team) 18%,transparent)}
+.group-select-header{display:flex;align-items:center;gap:11px;cursor:pointer;margin-bottom:10px}
+.group-checkbox{width:20px!important;height:20px;cursor:pointer;accent-color:#1c7ad9}
+.group-icon{font-size:26px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.08))}
+.group-name strong{font-size:15px;color:var(--ink)}
+.group-select-body{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px}
+.group-mem-chip{background:#f1f5fa;padding:3px 9px;border-radius:10px;font-weight:700;color:#4c6a8c}
+.group-mem-chip.has-members{background:#e2f8ec;color:#167c42}
+.group-status-sub{font-size:10px;color:var(--muted);font-weight:600}
+.group-card-full{border-color:#f1a2a2}
